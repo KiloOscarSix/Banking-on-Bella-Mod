@@ -6,11 +6,13 @@ init python:
 
     CharmRoute = "{color=#0f0}[Charm Route]"
     Charm_5 = "{color=#f00}[Charm -5]"
+    Charm_1 = "{color=#f00}[Charm -1]"
     Charm1 = "{color=#0f0}[Charm +1]"
     Charm2 = "{color=#0f0}[Charm +2]"
 
     DarkRoute = "{color=#0f0}[Dark Route]"
     Dark_5 = "{color=#f00}[Dark -5]"
+    Dark_1 = "{color=#f00}[Dark -1]"
     Dark1 = "{color=#0f0}[Dark +1]"
     Dark3 = "{color=#0f0}[Dark +3]"
     Dark5 = "{color=#0f0}[Dark +5]"
@@ -64,10 +66,10 @@ screen modOptions():
             style_prefix "check"
 
             textbutton "Charm Points":
-                action [ToggleVariable("CharmRoute", true_value="{color=#0f0}[Charm Route]", false_value=""), ToggleVariable("Charm_5", true_value="{color=#f00}[Charm -5]", false_value=""), ToggleVariable("Charm1", true_value="{color=#0f0}[Charm +1]", false_value=""), ToggleVariable("Charm2", true_value="{color=#0f0}[Charm +2]", false_value="")]
+                action [ToggleVariable("CharmRoute", true_value="{color=#0f0}[Charm Route]", false_value=""), ToggleVariable("Charm_5", true_value="{color=#f00}[Charm -5]", false_value=""), ToggleVariable("Charm_1", true_value="{color=#f00}[Charm -1]", false_value=""), ToggleVariable("Charm1", true_value="{color=#0f0}[Charm +1]", false_value=""), ToggleVariable("Charm2", true_value="{color=#0f0}[Charm +2]", false_value="")]
 
             textbutton "Dark Points":
-                action [ToggleVariable("DarkRoute", true_value="{color=#0f0}[Dark Route]", false_value=""), ToggleVariable("Dark_5", true_value="{color=#f00}[Dark -5]", false_value=""), ToggleVariable("Dark1", true_value="{color=#0f0}[Dark +1]", false_value=""), ToggleVariable("Dark3", true_value="{color=#0f0}[Dark +3]", false_value=""), ToggleVariable("Dark5", true_value="{color=#0f0}[Dark +5]", false_value=""), ToggleVariable("Dark 10", true_value="{color=#0f0}[Dark +10]", false_value=""), ToggleVariable("Dark12", true_value="{color=#0f0}[Dark +12]", false_value="")]
+                action [ToggleVariable("DarkRoute", true_value="{color=#0f0}[Dark Route]", false_value=""), ToggleVariable("Dark_5", true_value="{color=#f00}[Dark -5]", false_value=""), ToggleVariable("Dark_1", true_value="{color=#f00}[Dark -1]", false_value=""), ToggleVariable("Dark1", true_value="{color=#0f0}[Dark +1]", false_value=""), ToggleVariable("Dark3", true_value="{color=#0f0}[Dark +3]", false_value=""), ToggleVariable("Dark5", true_value="{color=#0f0}[Dark +5]", false_value=""), ToggleVariable("Dark 10", true_value="{color=#0f0}[Dark +10]", false_value=""), ToggleVariable("Dark12", true_value="{color=#0f0}[Dark +12]", false_value="")]
 
             textbutton "Janice Path":
                 action [ToggleVariable("JanicePath", true_value="{color=#0f0}[Janice Path]", false_value=""), ToggleVariable("JaniceDomPath", true_value="{color=#0f0}[Janice Dom Path]", false_value="")]

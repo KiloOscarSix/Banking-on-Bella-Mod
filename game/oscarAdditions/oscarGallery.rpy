@@ -14,7 +14,7 @@ init python:
     ["d2_tpeek1", {"x_charm_points":99, "x_dark_points":99}, "/images/d2/bob-d2-248.jpg"],
     ["galleryScene1", {}, "/images/d2/bob-d2-308.jpg"],
     ["galleryScene2", {}, "/images/d4/bob-d4-g79.jpg"],
-    ["d4_gena_dark_soul", {}, "/images/d4/bob-d4-g146.jpg"],
+    ["before_d4_gena_dark_cont3", {}, "/images/d4/bob-d4-g146.jpg"],
     ["d5_morning_shower", {"TatiSofiass":True, "d4_gg_dark_sex":True}, "/images/D5/bob-d5-8.jpg"],
     ],
     2: [
@@ -161,3 +161,7 @@ screen sceneCharacterMenu():
                 action Replay(i[0], scope=scopeDict, locked=False)
                 idle Transform(i[2], zoom=0.2)
                 hover Transform(im.MatrixColor(i[2], im.matrix.brightness(0.2)), zoom=0.2)
+
+label before_d4_gena_dark_cont3:
+    mod "This scene requires the Incest/Taboo patch installed. If the patch is not installed the scene will end early."
+    jump d4_gena_dark_cont3
