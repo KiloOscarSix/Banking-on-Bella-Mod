@@ -9967,6 +9967,7 @@ menu:
     "Fuck it!":
         jump d5_shower_mast
     "Better get to work!":
+        $ renpy.end_replay()
         jump d5_bus_stop
 
 
@@ -13566,7 +13567,7 @@ label d5_hotel_cher_cumdump:
     st "What a douche!"
     pc "Total asshole."
     "(But it was all worthwhile to fuck his big titty wife!)"
-
+    $ renpy.end_replay()
     play music "/music/Perception.mp3" fadeout 2.0 fadein 1.5
     scene bob-d5-557 with dissolve
     pc "You okay?"
@@ -13942,6 +13943,7 @@ label d5_stacy_safe_end:
 
 
 label d5_stacy_hj_end:
+    $ renpy.end_replay()
     taxi "We’re here. $30."
     $ moneyprc(-30)
     "After paying the cab driver…"

@@ -1,9 +1,17 @@
-style galleryHeader is text:
+style modTextHeader is text:
     size 100
     color "#fff"
-    font "DejaVuSans.TTF"
 
-style galleryBody is text:
+style modTextBody is text:
     size 50
     color "#fff"
-    font "DejaVuSans.TTF"
+
+style modTextBody2 is text:
+    size 50
+    color "#fff"
+
+style modTextButtonHeader:
+    size 75
+    idle_color "#f0f0f0"
+    hover_color "#ffcb4f"
+    selected_color "#ffcb4f"
