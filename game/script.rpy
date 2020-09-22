@@ -8884,10 +8884,11 @@ label d4_gena_dark_cont2:
     "(She’s been playing hard to get all night but now the message is coming in loud and clear!)"
     "(I’m not going to pass this up opportunity! I’m going to warm up that little hot coco snatch!)"
     menu:
+        mod "The 2nd option requires the Incest/Taboo patch.\n If you do not have it installed I recommend the first option."
         "(Nah dude. Know when to hold 'em and know when to fold 'em. Let’s call it a night.) [Charm1]":
             $ charmprc(1)
             jump d4_gena_badend3a
-        "[gr](I’m going in for a kiss, hold my fucking beer bitches!)":
+        "(I’m going in for a kiss, hold my fucking beer bitches!) [DarkRoute]":
             jump d4_gena_dark_cont3
 
 label d4_gena_dark_cont3:
@@ -8903,6 +8904,7 @@ label d4_gena_dark_cont3:
     if persistent.patch_enabled:
         jump d4_gena_dark_cont4
     else:
+        $ renpy.end_replay()
         jump d4_gena_badend4
 
 
