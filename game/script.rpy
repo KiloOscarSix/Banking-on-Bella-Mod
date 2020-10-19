@@ -18,6 +18,10 @@
 
 
 
+
+
+
+
 define lb = Character("Light Bob", color="#FF0000", image="light_bob")
 image light_bob_neutral = "lb neutral"
 image light_bob_confused = "lb_confused"
@@ -523,6 +527,13 @@ default d5_stacy_club_hotel_3some = False
 default d5_doggy_done = False
 default d5_missionary_done = False
 default d5_cowgirl_done = False
+
+default d5_gena_supportive = False
+default d5_gena_discourage = False
+default d5_gena_indifferent = False
+
+default d5_gena_dark = False
+default d5_gena_do_anal = False
 
 
 
@@ -4290,7 +4301,7 @@ label d2_wtr_cooler_tlk3:
     menu:
         "Tell Rob about what happened! [red]\[No Relationship\]":
             jump jsexhar
-        "No, I don’t want to make a big scene. [gr]\[Sub Relationship\]":
+        "No, I don’t want to make a big scene. [JaniceDomPath]":
             jump jprey
 
         "Fuck it I got no shame! I'm gonna hit that shit! [gr]\[Dom or Sub Relationship\]" if f_janice == True:
@@ -5441,6 +5452,7 @@ label d2_night_mast_tatianna:
 label d2_night_done:
     scene bob-d2-opening
     play music "Music/Inspire.mp3" fadeout 2.0 fadein 1.0 loop
+    jump d2_skip_night_recap
 
     if d2_late_for_work == True:
         "(I can’t be late again to work. Maybe jacking off once in the morning is enough!)"
@@ -5492,6 +5504,7 @@ label d2_night_done:
     else:
         "(I can’t believe Stacy called me. What does she want? Besides to crush my soul and break my heart. Fuck her she can call Karl. Bitch…)"
 
+label d2_skip_night_recap:
     "(Well that was a full fucking day. Tomorrow can’t possibly be this crazy but I better get some sleep just in case…)"
     show blackbg with fade
     stop music fadeout 2.0
@@ -6824,6 +6837,7 @@ label d3_night_mast_tatianna:
 label d3_night_done:
     scene bob-d3-mc-night-bed with dissolve
     play music "Music/Inspire.mp3" fadeout 2.0 fadein 1.0 loop
+    jump d3_skip_night_recap
 
 
     "(Man, what a day. At least I got to work on time today!)"
@@ -6880,6 +6894,7 @@ label d3_night_janice_status_end:
         show bob-d2-343 with dissolve
         "(After volleyball I got to head home really quick and clean up for my date with Gena at Sunbux. She seems like a pretty chill girl. Should be a lot of fun. She is for sure sexy as hell.)"
 
+label d3_skip_night_recap:
     scene bob-d3-mc-night-bed with dissolve
     "(Well now that I’ve talked to %(anita_name2)s, I know what to get %(lana_n)s for her birthday)"
 label d3_text_from_anita:
@@ -9485,6 +9500,7 @@ label d4_night_done:
 
 label d4_night_done_music_cont:
     scene bob-d3-mc-night-bed with dissolve
+    jump d4_skip_night_recap
 
     pause 1.5
 
@@ -9591,6 +9607,7 @@ label d4_night_janice_status_end:
         "(Maybe grab a nice bite to eat at the Lake City Cut House downtown. It is pricey but I know she’d love it.)"
         "(But where should I take her afterwards? Maybe we can go clubbing at that Foxy Roadhouse Rob was telling me about the other day? Yeah, she loves clubbing! That will be awesome!)"
 
+label d4_skip_night_recap:
     scene bob-d3-mc-night-bed with dissolve
     if visit == False:
         play sound "sfx/phonevibrate1.wav"
@@ -9603,8 +9620,11 @@ label d4_night_janice_status_end:
         call phone_end from _d4_end_phone_night_lana_1
         "(Well that didn’t go over so well. I better make sure I buy her a swimsuit she really likes for her birthday or she may never talk to me again, for real.)"
 
+    jump d4_skip_night_recap2
+
     "(%(lana_n)s’s birthday… so I definitely need to go shopping for that swimsuit this weekend. %(anita_name2)s recommended one but knowing %(lana_n)s I doubt that’s her style. Maybe I should get her one I think she’ll like instead…)"
     "(With three people visiting I have no idea what the sleeping arrangements will be but someone is bound to not be happy sleeping on the floor…)"
+label d4_skip_night_recap2:
     "(Today wasn’t too bad of day relatively speaking. Looking forward to tomorrow for once!!!.)"
     show blackbg with fade
     stop music fadeout 2.0
@@ -10271,6 +10291,8 @@ label d5_sofialunch:
     scene blackbg
     show bob-d5-25 with dissolve
     "(Work blah blah blah…Janice…fucking commas…blah blah blah…work…)"
+    scene blackbg
+    "After a few hours of grueling soul-crushing work..."
     play sound "sfx/knocking.wav"
     show bob-d5-26 with dissolve
     s "Hey Chico. Ready for lunch?"
@@ -10512,6 +10534,8 @@ label d5_teamlunch_std:
     scene blackbg
     show bob-d5-25 with dissolve
     "(Work blah blah blah… Euro Spa… Davorian Massage… blah blah blah…Ivanka… mmmm yummy Ivanka….)"
+    scene blackbg
+    "After a few hours of grueling soul-crushing work..."
     play sound "sfx/knocking.wav"
     show bob-d5-109 with dissolve
     r "Hey you about ready for lunch kid?"
@@ -10782,6 +10806,8 @@ label d5_teamlunch_jdom:
     scene blackbg
     show bob-d5-25 with dissolve
     "(Work blah blah blah…Euro Spa…Davorian Massage…blah blah blah…Love to massage Janice…Mmmm yummy Janice snatchy juice….)"
+    scene blackbg
+    "After a few hours of grueling soul-crushing work..."
     play sound "sfx/knocking.wav"
     show bob-d5-109 with dissolve
     r "Hey you about ready for lunch kid?"
@@ -11019,7 +11045,7 @@ label d5_after_lunch_janice_pissed:
     j "I might have even let you fuck her too had you been a team player!!! But you had to go and fuck it all up for everyone didn’t you?!?"
     show bob-d5-197 with dissolve
     "(What…the…fuck…just…happened.)"
-    "(what was that shit about fucking Sofia and sharing?)"
+    "(What was that shit about fucking Sofia and sharing?)"
     "(I got to talk to Reggie!)"
     jump d5_reg_convo
 
@@ -11446,14 +11472,17 @@ label d5_help_sofia_yes:
     $ d5_sofia_help_work = True
     $ charmprc(1)
     $ s_inf += 1
+    scene blackbg with dissolve
+    "An hour later."
+    show bob-d5-25 with dissolve
     "(Fuck it is getting late! It’s already 6:00 PM. Doesn’t Frank have anything else to fucking do on a Friday night?!?)"
     w "Okay, that should do it! Sofia here is the write-up for the loan package. It is quite simply the most perfect if I may say so myself."
     s "Great Frank! Thanks!"
+    play sound "sfx/footsteps.wav"
     w "No problem Sofia. Someone has to work to pay the bills around here! I’m heading home to start my weekend. You really should too."
     "(Asshole!)"
     s "Thanks Frank. Have a nice weekend."
     w "Indeed. You as well."
-    play sound "sfx/footsteps.wav"
     stop music fadeout 2.0
     show bob-d5-232 with dissolve
     pc "Hey Sofia."
@@ -11533,6 +11562,7 @@ label d5_help_sofia_yes_reg_info:
     "(Am I getting fucking fired?!? Oh gawd! I’m going to have to move home or worse! Wait, okay, breathe. Maybe it’s not me. Who the fuck else could it be though?!?)"
     "(Rob, it could be Rob!?!)"
     "(He called in sick! It’s got to be Rob, right? What if it is Rob!?! What if it’s Reg?!?)"
+    "(Sofia? Oh shit! Could it be Sofia?!?)"
     "(Argh! Breathe %(pc)s! Stay calm!)"
     show bob-d5-275 with dissolve
     s "Hello!?!? Anyone home?!?"
@@ -11583,6 +11613,7 @@ label d5_help_sofia_yes_cont:
     "(Am I getting fucking fired?!? Oh gawd! I’m going to have to move home or worse! Wait, okay, breathe. Maybe it’s not me. Who the fuck else could it be though?!?)"
     "(Rob, it could be Rob!?!)"
     "(He called in sick! It’s got to be Rob, right? What if it is Rob!?! What if it’s Reg?!?)"
+    "(Sofia? Oh shit! Could it be Sofia?!?)"
     "(Argh! Breathe %(pc)s! Stay calm!)"
     show bob-d5-275 with dissolve
     s "Hello!?!? Anyone home?!?"
@@ -11937,7 +11968,7 @@ label d5_steak_house_family:
     show bob-d5-338 with dissolve
     st "Cary is good, I guess. She’s going into her senior year and just had her eighteenth birthday last month."
     show bob-d5-339 with dissolve
-    st "She’s been taking some prep stuff over the summer. Stereotypical nerdy Asian kid stuff! She is annoying as all hell. l but I do feel bad for her."
+    st "She’s been taking some prep stuff over the summer. Stereotypical nerdy Asian kid stuff! She is annoying as all hell. I do feel bad for her though."
     pc "Why?"
     show bob-d5-340 with dissolve
     st "She’s such a nerd! She never leaves the house! She has very few friends and she certainly has never been on a date let alone kissed a boy. She is just sooooo naïve and nerdy!"
@@ -12059,7 +12090,7 @@ label d5_steak_house_continue:
     st "I just want us to go back to how things were. I want us to just be here now."
     pc "I know. I hear you. It sucked losing you, my best friend."
     show bob-d5-365 with dissolve
-    st "Sniff! I want you to know I’m here now and there is no other place I’d rather be"
+    st "Sniff! I want you to know I’m here now and there is no other place I’d rather be."
     pc "What do you think the future holds for us Stacy?"
     show bob-d5-366 with dissolve
     st "I don’t know? Let’s just enjoy the here and now. Let’s live in the moment."
@@ -12720,14 +12751,16 @@ label d5_stacy_cab_hj:
     show bob-d5-496 with dissolve
     pc "Oh, my gawd Stacy!"
     st "My hand…it won’t even go around it! Oh, my gawd!"
-    "(Stacy little hand wrapped around my cock!)"
+    "(Stacy's little hand wrapped around my cock!)"
     show stacy_cab_hj_start
     st "Am I doing it right?"
     pc "Oh gawd yes Stacy!"
+    show bob_d5_stacyhj_cab
     "(Wow! She’s so good!)"
     st "I can feel it throbbing! Are you going to…"
     pc "I’m going to cum!"
     pc "Oh…fuck!"
+    hide bob_d5_stacyhj_cab
     show stacy_cab_hj_release
     pc "Fuck!!!"
     st "Wow that was a lot!"
@@ -12739,9 +12772,9 @@ label d5_stacy_cab_hj:
     st "I don’t know? Hadn’t thought that far ahead."
 
     menu:
+        "I’ll lick it off your fingers.":
+            jump d5_stacy_fingers
         "You can wipe it off on my shirt. [StacyLovePath]":
-
-
             $ st_inf += 1
             jump d5_stacy_wipe_shirt
         "Lick it off. [StacySubPath]":
@@ -12749,10 +12782,13 @@ label d5_stacy_cab_hj:
             jump d5_stacy_lick
 
 label d5_stacy_fingers:
-    scene bob-d5-503 with dissolve
+    scene bob-d5-502 with dissolve
     st "Oh my gawd! Ew! You’re so gross!"
     pc "What?!?"
+    show bob-d5-503 with dissolve
     st "I can’t even with you right now!"
+    show bob-d5-503a with dissolve
+    st "I’ll wipe it on the seat!"
     play music "music/Perception.mp3" fadeout 2.0 fadein 1.5 loop
     jump d5_stacy_hj_end
 
@@ -13138,7 +13174,7 @@ label d5_hotel_noblow:
 label d5_hotel_blow:
     scene bob-d5-589 with dissolve
     cher "Yeah come on over and grab some blow %(pc)s!"
-    "(Why so no when it feels so good to say yes!)"
+    "(Why say no when it feels so good to say yes!)"
     pc "Fuck yeah!"
     show bob-d5-590 with dissolve
     chad "Go ahead baby!"
@@ -13153,7 +13189,9 @@ label d5_hotel_blow:
     show bob-d5-593 with dissolve
     chad "Alright buddy, your time to nosedive!"
     show bob-d5-594 with dissolve
-    pc "Snooooort! Holy fucking shit!"
+    pc "Snooooort!"
+    show bob-d5-594a with dissolve
+    pc "Holy fucking shit!"
     show bob-d5-595 with dissolve
     chad "Hahahaha! Fuck yeah!"
     pc "Fuck yeah!"
@@ -13269,6 +13307,7 @@ label d5_hotel_nophotofap:
     pc "What?!? For real?"
     show bob-d5-633 with dissolve
     chad "Fuck yeah, man! Look at her! She needs some fucking meat relief. Fill her up, man! Fuck that slut!"
+    scene bob-d5-628 with dissolve
     "(Gawd I want to fuck the bitch! I mean look at that ass! Those tits!)"
     "(But what would Stacy think? Stacy might get more than a little pissed off at me for fucking this chick!)"
     "(Will I ruin things with her?!? Do I care?)"
@@ -13308,6 +13347,7 @@ label d5_hotel_threesome:
     cher "Oh… oh… oh my gawd yes! Fuck my pussy with that fat cock, you gawd damn stud! Fuck me!"
     pc "Fucking take it Cher! You dirty whore. You love this big cock don’t you!?!"
     show bob-d5-650 with dissolve
+    hide d5_hotel_3some_movie1
     cher "Yes! Yes, fuck me!"
     scene bob-d5-653 with dissolve
     st "Wha…what?!? %(pc)s!?! What the hell?!?"
@@ -13316,7 +13356,8 @@ label d5_hotel_threesome:
     chad "He’s giving Cher the same satisfaction she is giving you Stacy! Isn’t it fucking hot!"
     show bob-d5-655 with dissolve
     "(Stacy looks pissed but…gawd this feels so fucking good!)"
-    show d5_hotel_3some_ani4
+
+    show d5_hotel_3some_movie4
     "(Oh gawd, perfection! A little dry but not full on raw dog!)"
     "(Fucking so warm! Fuck I love pussy!)"
     scene bob-d5-657 with dissolve
@@ -13324,7 +13365,8 @@ label d5_hotel_threesome:
     "(Shut the fuck up Chad! You fucking cucked douche!)"
     show bob-d5-656
     chad "Cher don’t forget to take care of all our guests! Eat baby girl’s pussy!"
-    show d5_hotel_3some_ani3
+
+    show d5_hotel_3some_movie3
     st "%(pc)s?!? I…I…oh gawd yes! Fuck…right there, Cher!"
     scene bob-d5-656 with dissolve
     chad "You like that baby?!? You like to feel %(pc)s cock in you!?!"
@@ -13426,9 +13468,8 @@ label d5_bangcher_cont:
         hide d5_673_cherani2
         show d5_673_cherani2a
     else:
-
-        show bob-d5-682 with dissolve
         hide d5_673_cherani3
+        show d5_673_cherani3a
     "(Oh, gawd those tits! Look at them bounce!"
     cher "Oh, yes! Oh gawd! Fuck me please! Please fuck me!"
     pc "Fuck! Fuck yes! Fuck me!"
@@ -13436,12 +13477,12 @@ label d5_bangcher_cont:
         hide d5_673_cherani1a
         show d5_673_cherani1b
     elif d5_missionary_done == True:
-
-        show bob-d5-684 with dissolve
         hide d5_673_cherani2a
+        show d5_673_cherani2b
     else:
+        hide d5_673_cherani3a
+        show d5_673_cherani3b
 
-        show bob-d5-685 with dissolve
     cher "Oh… oh… gawd yes! I’m cumming!!!"
 
     cher "Oh gawd yes! Fuck me, %(cher_you_rpg)s. Fuck me!!!!"
@@ -13586,7 +13627,7 @@ label d5_hotel_cher_cumdump:
     show bob-d5-554 with dissolve
     st "I think I just need time to process. If Chad wasn’t such a dick… he kind of ruined the experience for me."
     pc "I understand. Me too. How did you feel about being with another girl?"
-    show bob-d5-557 with dissolve
+    show bob-d5-493 with dissolve
     st "I’m not going to lie. I’ve always been curious about it but I’ve never… I mean you know."
     pc "Experimented."
     st "Yeah."
@@ -13683,7 +13724,7 @@ label d5_hotel_cher_pom:
     show bob-d5-554 with dissolve
     st "I think I just need time to process. If Chad wasn’t such a dick… he kind of ruined the experience for me."
     pc "I understand. Me too. How did you feel about being with another girl?"
-    show bob-d5-557 with dissolve
+    show bob-d5-493 with dissolve
     st "I’m not going to lie I’ve always been curious about it but I’ve never… I mean you know."
     pc "Experimented?"
     st "Right."
@@ -14066,34 +14107,572 @@ label d5_hotel_group_end:
 
 
 label d5_gena_bootycall:
-    scene bob-d5-756
+    scene bob-d5-756 with dissolve
     "(Gena should be here pretty soon. My stomach is in knots! Why am I so nervous? Because you’re about to, maybe, get laid!)"
     play sound "sfx/knocking.wav"
-    show bob-d5-757
+    show bob-d5-757 with dissolve
     "(Oh shit! That’s her!)"
     pc "Coming!"
-    show bob-d5-758
+    show bob-d5-758 with dissolve
     "(Gawd I sound so desperate. Calm down. Play it cool man!)"
     play music "Music/All That.mp3" fadeout 1.5 fadein 1.5 loop
-    show bob-d5-759
+
+    show bob-d5-759 with dissolve
     "(Damn she’s beautiful!)"
     gg "Hey %(pc)s!"
     pc "Hey! Come on in!"
-    show bob-d5-760
+    show bob-d5-760 with dissolve
     gg "Sorry it took me a while. I got here as soon as I could."
-    show bob-d5-761
-    pc "No problem you’re right on time. Can I take your coat?"
-    show bob-d5-762
+    show bob-d5-761 with dissolve
+    pc "No problem. You’re right on time. Can I take your coat?"
+    show bob-d5-762 with dissolve
     gg "Absolutely!"
-    "(OH, MY GAWD!!!)"
-    show bob-d5-763
+    "(OH MY GAWD!!!)"
+    show bob-d5-763 with dissolve
     gg "Ready for that movie?"
-    pc "Screw the movie come here!"
-    show bob-d5-764
-    pc "My gawd you are so beautiful!"
-    gg "Thanks! I was hoping you’d like it!"
+    pc "Screw the movie. Come here!"
+    show bob-d5-764 with dissolve
+    pc "You are so beautiful!"
+    gg "Thanks! I was hoping you’d like it."
     pc "Let me show you how much I like it!"
-    jump end_of_current_game
+    show bob-d5-765 with dissolve
+    "(Mmm. She’s such a hot kisser!)"
+    show bob-d5-766 with dissolve
+    pc "Come here!"
+    show bob-d5-767 with dissolve
+    "(Her skin is so beautiful. The way our skins contrast… it’s so fucking hot.)"
+    gg "Let’s get you more comfortable. No need for this shirt."
+    show bob-d5-768 with dissolve
+    pc "You’re so sexy Gena!"
+    show bob-d5-768a with dissolve
+    "(Gawd she is truly amazing!)"
+    show bob-d5-769 with dissolve
+    gg "Hmm… I’ve missed this!"
+    show bob-d5-770 with dissolve
+    gg "Do you want it in my mouth %(pc)s?"
+    pc "Oh, Gawd, yes Gena!"
+    play sound "sfx/blowjob.wav" loop
+    show d5_gena_771_ani
+    gg "Mmm…yom…yom…mmm!"
+    "(Fuck. If she keeps this up I’m going to blow my load!)"
+    pc "Oh gawd, baby, that’s so…ungh…good!!"
+    stop sound fadeout 1.0
+    scene bob-d5-770 with dissolve
+    $ gena_m_rpg = renpy.input("Enter what pet name you want to call Gena, or just press the \"Enter\" key for \"Gena\".")
+    $ gena_m_rpg = gena_m_rpg.strip()
+    if gena_m_rpg == "":
+        $ gena_m_rpg = "Gena"
+    $ gena_m_you_rpg = renpy.input("Enter what pet name Gena calls you, or just press the \"Enter\" key for \""+pc+"\".")
+    $ gena_m_you_rpg = gena_m_you_rpg.strip()
+    if gena_m_you_rpg == "":
+        $ gena_m_you_rpg = pc
+    gg "You like that %(gena_m_you_rpg)s?"
+    pc "Mmm… Gawd yes!"
+    show bob-d5-772 with dissolve
+    gg "Good. I like to make you feel good %(gena_m_you_rpg)s."
+    pc "You’re such a good little %(gena_m_rpg)s."
+    show bob-d5-773 with dissolve
+    gg "I’ve been thinking about this all day long!"
+    play sound "sfx/pantingmoaning.wav" loop
+    show bob-d5-774 with dissolve
+    gg "Oh my Gawd! I’ll never get used to the size of you!"
+    pc "Fuck, Gena, you’re so sexy!"
+    show bob_d5_gani1
+    pc "Ride me baby! Ungh…ride your %(gena_m_you_rpg)s!"
+    gg "Oh Gawd, yes %(gena_m_you_rpg)s! Ungh…give it to me! Give it to your little %(gena_m_rpg)s"
+    scene blackbg with dissolve
+    show bob_d5_gani2
+    gg "Ungh… ungh… oh my gawd you feel so good!"
+    "(Fuck this feels so amazing!)"
+    gg "I’m getting tired."
+    pc "I got you baby!"
+    scene blackbg with dissolve
+    play sound "sfx/moaninggettingcloser.wav" loop
+    show bob_d5_gani3
+    gg "UNGH!!! Oh, my gawd! So fuuuu… cking… so fucking… ungh… deeeep!"
+    pc "Yeah… oh Gawd fuck yeah! Take it %(gena_m_rpg)s! Take your %(gena_m_you_rpg)s's cock!"
+    "(Oh, my Gawd! I can feel my dick slamming her…her cervix. Fuck I’m going to cum if I keep this up!)"
+    pc "I’m going to cum Gena!"
+    show bob-d5-775 with dissolve
+    hide bob_d5_gani3
+    gg "Me too baby! Me too! Keep going!"
+    pc "Oh Gawd Gena, I can’t hold on!"
+    show bob-d5-776 with dissolve
+    play sound "sfx/orgasmandbreathing.wav"
+    gg "Do it %(gena_m_you_rpg)s come in your little %(gena_m_rpg)s!!!"
+    pc "Ungh fuck!!!!!!"
+    show bob-d5-777 with dissolve
+    gg "Oh my Gawd yes! Fill me up!"
+    pc "Ungh… ungh… ungh hun… oh my … that was so fucking… good!"
+    stop sound
+    play music "music/City Slicker.mp3" fadeout 2.0 fadein 1.5 loop
+    show bob-d5-778 with dissolve
+    gg "Gawd I needed that so badly. What a stress reliever. Come on, let’s lay down for little bit."
+    pc "Gena you’re seriously the fucking best. I’m worn the hell out."
+    gg "What were you up to before I texted you?"
+    pc "Nothing much."
+    if d5_stacy_date_go == True:
+        pc "Went out with a buddy from school who was in town. Had dinner and a couple of drinks. Nothing crazy."
+        jump d5_gena_booty_call_cont
+    else:
+        pc "I hit the gym after work."
+        jump d5_gena_booty_call_cont
+
+label d5_gena_booty_call_cont:
+    scene bob-d5-779 with dissolve
+    gg "Nice. Aren’t you glad I texted?"
+    pc "Gawd yes. I’m always happy to spend time with you."
+    show bob-d5-780 with dissolve
+    gg "Aww you’re so sweet. I was hoping you were awake."
+    pc "Why were you up so late?"
+    show bob-d5-781 with dissolve
+    gg "Wally’s had a game tonight and I was interning."
+    pc "Nice! You have such a glamorous job!"
+    gg "Yeah it’s pretty cool. Speaking of which..."
+    pc "You got us free tickets to the Wally’s versus Pups?!?"
+    show bob-d5-782 with dissolve
+    gg "No not quite. But I do have some pretty exciting news!"
+    pc "Really? Do tell!"
+    show bob-d5-783 with dissolve
+    gg "This girl at work named Karen is sick. And she can’t travel with the team during their two-week west coast swing. So, they asked me to go with them!!!"
+    pc "What?!? No way?"
+    show bob-d5-784 with dissolve
+    gg "Yeah! Isn’t that so awesome!"
+    "(Wow. Two weeks. That’s a long time to be apart.)"
+    show bob-d5-785 with dissolve
+    gg "Blah blah blah…"
+    "(Will she even remember me when she gets back. Do I even care?)"
+    show bob-d5-786 with dissolve
+    gg "Blah blah blah…"
+    "(She’ll be around all those baseballs players. I mean they’re all filthy rich and famous athletes. She’ll be staying in the same hotels as them. And… oh man can I even complete with that? Do I even want to try?)"
+    show bob-d5-787 with dissolve
+    gg "Blah blah blah…"
+    "(What do I say? I mean it’s exciting for her, sure. Kind of a big break, right? All her hard work is paying off!)"
+    show bob-d5-788 with dissolve
+    gg "Blah blah blah…"
+    "(But what if she hooks up with a player? There’s no way they don’t hit on her. Maybe they get her drunk and take advantage of her or something?!? I mean she bangs my broke ass, what would she do with a guy with money and fame?)"
+    "(But this girl clearly loves my cock, right? Am I so insecure I won’t support her dream?)"
+    show bob-d5-789 with dissolve
+    gg "So what do you think? Pretty exciting huh?"
+    "(Should I support her or dissuade her? Do I even care?)"
+    $ d5_gena_supportive = False
+    $ d5_gena_discourage = False
+    $ d5_gena_indifferent = False
+    menu:
+        "Hell, yeah its exciting! Congratulations! I’m so happy for you! [Charm1] [GenaPath]":
+            $ gg_inf += 1
+            $ charmprc(1)
+            $ d5_gena_supportive = True
+            jump d5_bootycall_support
+        "I don’t know Gena. What about work at the gym? More importantly what about us? [Dark1]":
+            $ darkprc(1)
+            $ d5_gena_discourage = True
+            jump d5_bootycall_discourage
+        "That’s pretty cool. Maybe hit me up when you get back? We can hang out or whatever.":
+            $ d5_gena_indifferent = True
+            jump d5_bootycall_indifferent
+
+label d5_bootycall_support:
+    scene bob-d5-790 with dissolve
+    gg "Thanks!!! I’m so excited!"
+    pc "Me too! I can’t wait to hear all about the fun you’re going to have!"
+    gg "Yeah I think it’s going to be a blast! Are you going to miss me?"
+    pc "Yeah of course. I’m not going to lie and say I’m not a little jealous of you hanging out with all those rich and famous baseball players."
+    pc "Traveling the west coast! Staying in fancy all expenses paid hotels! That sounds amazing!"
+    show bob-d5-791 with dissolve
+    gg "Aww! You’re so cute."
+    pc "Just saying…"
+    show bob-d5-792 with dissolve
+    gg "Don’t worry. I’m not interested in any of the Wally’s!"
+    pc "That’s good to hear hahaha."
+    show bob-d5-793 with dissolve
+    gg "Seriously. If I was into them, I won’t be here with you tonight, right?"
+    pc "That’s true. So, I guess you’re going to miss me then huh?"
+    show bob-d5-794 with dissolve
+    gg "Maybe…"
+    pc "Maybe? Why you sneaky little... come here!"
+    show bob-d5-795 with dissolve
+    gg "Argh!!! No tickling!!!! HAHAHAHAHAHA!"
+    pc "HAHAHAH! Not until you say you’ll miss me!"
+    show bob-d5-796 with dissolve
+    gg "HAHAHAHA! Okay! Okay! I’ll miss you!"
+    pc "Good. That’s better!"
+    show bob-d5-797 with dissolve
+    gg "You’re so mean!"
+    pc "Just on the inside. On the outside I’m all soft."
+    show bob-d5-798 with dissolve
+    gg "Hahaha! What does that even mean?"
+    pc "I don’t know… hahaha!"
+    show bob-d5-799 with dissolve
+    gg "Thanks for the support. It means a lot."
+    pc "Of course."
+    scene bob-d5-800 with dissolve
+    gg "Looks like someone is getting hard on the outside!"
+    "(Man, I’m such a satyr!)"
+    pc "Hmmm… think you can handle it?"
+    show bob-d5-801 with dissolve
+    gg "Try me!"
+    show bob-d5-802 with dissolve
+    pc "Your wish is my command!"
+    show bob-d5-803 with dissolve
+    gg "Oh that feels so relaxing…"
+    show bob-d5-804 with dissolve
+    "(Look at that fine black ass. I just want to eat that up!)"
+    show bob-d5-805 with dissolve
+    gg "Where are you going now naughty %(gena_m_you_rpg)s?"
+    show bob-d5-806 with dissolve
+    "(Hmmm that’s a good question. Where am I going?)"
+
+    menu:
+        "(I’m going to rim and ride that puckered little brown hide!) [gr]\[Ass\]":
+            jump d5_gena_bootycall_rim
+        "(I’m going to drink that sweet little juice box and pump another load into that hot snatch!) [gr]\[Pussy\]":
+            jump d5_gena_bootycall_snatch
+
+label d5_gena_bootycall_rim:
+    scene bob-d5-807 with dissolve
+    pc "It’s a surprise…"
+    show bob-d5-808 with dissolve
+    "(Gawd I want to eat her ass so bad!)"
+    show d5_gena_808_ani
+    pc "Yum yom yom…mmmm"
+    hide d5_gena_808_ani
+    show d5_gena_808_cd
+    gg "Oh my Gawd! %(pc)s! What are you doing? That’s dirty! Nuh… no… I… oh Gawd yes… ungh yes right there!"
+    show bob-d5-809 with dissolve
+    gg "Oh my Gawd! I’ve never… ungh… feels so good. Don’t stop! Oh my Gawd you’re so dirty!"
+    gg "Mmm… yes lick my ass! Don’t stop!"
+    "(No can-do my little chocolate buckaroo! I’m going to fuck that sweet little brown cherry!)"
+    show bob-d5-810 with dissolve
+    gg "Ungh… yes… I… why… why’d you stop?"
+    show bob-d5-811 with dissolve
+    gg "Oh! No… gawd no %(pc)s! Hey wait a second! Listen! I’ve never… you’ll tear me apart! I don’t want to…"
+
+    "(Gawd her ass is so sexy…)"
+    "(Should I push it…?)"
+    "(Better to ask forgiveness than permission, isn’t that what they say?)"
+    $ d5_gena_dark = False
+    $ d5_gena_do_anal = False
+    if persistent.patch_enabled == True:
+        jump d5_gena_more_choices
+    else:
+        jump d5_gena_choices
+
+label d5_gena_choices:
+    menu:
+        "(Maybe I can talk her into it?) [Charm_3] \[Ass\]" if x_charm_points >= 3:
+            $ charmprc(-3)
+            jump d5_gena_anal
+        "(Oh well that hot cocoa snatch is just as good!) [gr]\[Pussy\]":
+            jump d5_gena_snatch_a
+
+label d5_gena_anal:
+    $ d5_gena_do_anal = True
+    pc "Have you ever tried?"
+    scene bob-d5-812 with dissolve
+    gg "No, never."
+    pc "Aren’t you curious? Lot’s of girls like it."
+    show bob-d5-813 with dissolve
+    gg "Everyone I’ve talked to says it hurts like a mutha’ fucker!"
+    pc "Maybe at first, but if the guy is gentle and uses lube it can feel really good!"
+    show bob-d5-814 with dissolve
+    gg "I don’t know %(pc)s. Your dick looks way too big to fit. You’ll rip me in half."
+    pc "No, I’ll be gentle I promise. I’d never hurt you Gena Bean."
+    show bob-d5-815 with dissolve
+    gg "I… Gena Bean? Hahahaha! Well, that’s a new one!"
+    pc "Why say no when it can feel so good to say yes?!?"
+    gg "Oh my Gawd you are so ridiculous! Alright we can try. But be gentle!"
+    pc "I promise. Let’s just start with one finger."
+    scene bob-d5-816 with dissolve
+    gg "Okay… but gentle!"
+    show d5_gena_816_ani1
+    pc "How does that feel?"
+    hide d5_gena_816_ani1
+    show d5_gena_816_ani2
+    "(Oh man her ass is so tight!)"
+    scene bob-d5-817 with dissolve
+    gg "Umm… ah… not bad… weird."
+    show bob-d5-817a with dissolve
+    "(Let’s see if she can take two.)"
+    show bob-d5-817b with dissolve
+    pc "Okay, let’s try two."
+    show bob-d5-817 with dissolve
+    gg "O…Okay… oww!"
+    show d5_gena_817_ani1
+    gg "Oh! Ungh… uh… ungh… uh!"
+    scene bob-d5-818 with dissolve
+    gg "Gawd… feels so full."
+    show d5_gena_817_ani2
+    pc "You like that?"
+    scene bob-d5-819 with dissolve
+    gg "I… I don’t know. I feel so stretched… ungh so full. It’s just a different feel."
+    show bob-d5-820 with dissolve
+    pc "Okay, I think you’re ready for more."
+    show bob-d5-814 with dissolve
+    gg "I don’t know…"
+    pc "I’ll be gentle baby. Just relax and breathe. If you tense up it will hurt. You got to relax."
+    gg "Ungh…okay. Be gentle though! Remember!"
+    pc "I know. I know. When I push in, try to push out. It will go easier."
+    gg "Oh…okay."
+    "(Oh, my gawd! I can’t believe she’s going to let me do this!)"
+    show bob-d5-821 with dissolve
+    pc "Here we go baby,"
+    show bob-d5-822 with dissolve
+    gg "Ow ow ow! Take it… take it… out! Take it out! It’s too big! Argh!"
+    pc "Shush, shush, shush. Breath. Relax. Relax. You got this baby."
+    "(Oh my Gawd she is so fucking tight. She might be right. This might be too much for her!)"
+    play sound "sfx/pantingmoaning.wav" loop
+    show bob-d5-823 with dissolve
+    gg "Oh fuck! It’s too much %(pc)s!"
+    "(Gawd damn her ass… like a vice grip! So fucking tight!)"
+    pc "Oh Gawd Gena! You’re so… fucking… tight! You feel so good!"
+    gg "Gawd damn… mother fucker! Oh… my Gawd %(pc)s!"
+    pc "Relax… relax. Breathe! It’s just the head. You’ll get used to it."
+    show bob-d5-827 with dissolve
+    gg "Just the… oh my Gawd! It’s too much!"
+    pc "You’ll get used to it. Just relax!"
+    scene bob-d5-823 with dissolve
+    gg "Oh my Gawd… ungh… so… so fucking… full!"
+    pc "Gawd yes baby. You’re so fucking tight! I’m going to start moving now!"
+    show bob-d5-824 with dissolve
+    play sound "sfx/heavymoan.wav" loop
+    gg "Argh!!! Oh my Gawd! %(pc)s!"
+    show bob-d5-825 with dissolve
+    pc "Baby just a little bit more. Yeah just like that! Right fucking there!"
+    show bob_d5_gani4
+    pause 1.3
+    show bob-d5-848
+    gg "Argh! Argh! Ungh… ungh!"
+    pc "That’s’ it baby don’t fight it! Just take that fat cock! Take it in your ass baby! Fuck!"
+    scene bob-d5-823 with dissolve
+    gg "Ungh… ungh… oh gawd! Oh gawd %(pc)s!"
+    pc "Play with your pussy, baby! Feel it! Feel that fat cock in your ass! You’re fucking love it aren’t you, you %(gena_m_rpg)s!"
+    show bob-d5-826 with dissolve
+    play sound "sfx/heaviermoan.wav" loop
+    gg "Oh gawd! Ughn… ughn! Fuck… ungh… gawd yes! Oh my Gawd %(pc)s I’m going to cum!"
+    pc "Where’s my cock, baby?"
+    show bob-d5-827 with dissolve
+    gg "Fuck! Oh my gawd!"
+    pc "Come on baby, where’s my cock?"
+    show bob-d5-828 with dissolve
+    gg "My… my fucking… ungh… ass!"
+    pc "That’s right baby. In your ass! Oh gawd baby… yes! I’m going to fucking fill your tight little ass up! I’m fucking cumming baby!"
+    show bob-d5-829 with dissolve
+    gg "Do it! Fucking cum in me!"
+    pc "Oh Gawd yes! Tell me you want your %(gena_m_you_rpg)s to cum in you!"
+    show d5_gena_830_ani
+    gg "Cum %(gena_m_you_rpg)s! Cum in your… ughn… fuck! Cum in your little %(gena_m_rpg)s’s asshole!"
+    scene bob-d5-831 with dissolve
+    play sound "sfx/orgasm1.wav"
+    pc "Oh gawd yes Gena! Fuck yeah, I’m cumming! Ughn!"
+    gg "Ungh!!! Fuck! Me too!"
+    stop sound fadeout 2.0
+    show bob-d5-832 with dissolve
+    pc "Oh my Gawd, Gena. That was so fucking hot."
+    show bob-d5-833 with dissolve
+    gg "I…I never knew. I never knew I could cum like that. But, man, that fucking hurt!"
+    pc "I’m sorry Gena. I couldn’t help myself. I tried to be as gentle as possible. But your ass is just so fucking sexy! It was begging to be fucked!"
+    show bob-d5-834 with dissolve
+    gg "Hahahah! Asshole!"
+    pc "I just fucked yours, hahaha! Gena, come on you know loved it! It was so fucking hot!"
+    show bob-d5-835 with dissolve
+    gg "I don’t know. It was okay. I think you liked it more that’s for sure."
+    pc "Not going to lie. It was fabulous!"
+    show bob-d5-836 with dissolve
+    gg "I’m going to miss hanging out with you for the next two weeks."
+    pc "Me too."
+    show bob-d5-837 with dissolve
+    gg "Speaking of which, I’m sorry %(pc)s but I got to get going."
+    pc "Wha...what? Already? For real?"
+    show bob-d5-838 with dissolve
+    gg "Yeah, I’ve got a day game tomorrow and have to be at the park super early."
+    pc "Crap. Well I understand. Let me call you a cab."
+    show bob-d5-839 with dissolve
+    gg "Thanks! Now what did you do with my panties this time?!?"
+    pc "Hahaha!"
+    show bob-d5-840 with dissolve
+    gg "Thanks again. Had a lot of fun!"
+    pc "Yeah me too!"
+    show bob-d5-841 with dissolve
+    gg "See you in two weeks!"
+    pc "Okay, sounds good! Safe Travels!"
+    show bob-d5-842 with dissolve
+    gg "I’ll call you!"
+    pc "Sounds good!"
+    show bob-d5-758 with dissolve
+    $ moneyprc(-20)
+    "Cab ride home for Gena cost $20."
+    "(What a great girl! I’m so lucky. I can’t wait to see her again when she gets back!)"
+    "(Man… am I falling for this girl? Am I having feelings?)"
+    "(I don’t know but, man, that ass is fire!)"
+    "(And speaking of ass, I should wash mine…)"
+    jump d5_shower_night
+
+
+
+
+
+
+
+label d5_gena_snatch_a:
+    scene bob-d5-801 with dissolve
+    pc "No problem, Gena. I’m not going to pressure you into anything you don’t want to do."
+    show bob-d5-858 with dissolve
+    gg "Thanks %(pc)s. I’m not saying no. Maybe we can try another time with a shit ton of lube. Just not tonight, okay?"
+    pc "Of course! No rush. You’ve got such a sexy ass and I just thought it might be fun to try something a little different."
+    show bob-d5-859 with dissolve
+    gg "Maybe next time. Right now, this kitty is on fire %(pc)s! Spray it down with that fat hose of yours!"
+    pc "Meow!"
+    jump d5_gena_bootycall_snatch
+
+label d5_gena_bootycall_snatch:
+    scene bob-d5-860 with dissolve
+    play sound "sfx/pantingmoaning.wav" loop
+    gg "Oh gawd yes right there!"
+    "(I can’t hold back any longer! I need that hot cocoa snatch on my cock now! Balls deep boys!)"
+    show bob-d5-861 with dissolve
+    gg "Oh Gawd yes! Give it to me %(gena_m_you_rpg)s! Ughn!!!"
+    show bob_d5_gani5
+    gg "%(pc)s, nuh… nuh… ungh… oh my Gawd! Fuck me!"
+    pc "Oh Gawd Gena! You’re so… so… fucking hot! You feel so good!"
+    show bob-d5-862 with dissolve
+    hide bob_d5_gani5
+    gg "Mhmm… ungh… oh fuck yes!"
+    show bob-d5-863 with dissolve
+    gg "Oh my Gawd… I… ungh… so… so fucking… full!"
+    pc "Gawd yes baby you’re so fucking tight!"
+    show bob-d5-864 with dissolve
+    gg "Argh!!! Ye…yes…oh my Gawd yes!"
+    pc "Yeah just like that! Right there!"
+    show bob-d5-865 with dissolve
+    play sound "sfx/moaninggettingcloser.wav" loop
+    gg "Ungh… ungh!"
+    pc "That’s’ it %(gena_m_rpg)s. Take that fat cock! Take it!"
+    show bob-d5-866 with dissolve
+    gg "Ungh… ungh… oh gawd! Yes please give it to me %(gena_m_you_rpg)s!"
+    show bob-d5-867 with dissolve
+    gg "Oh gawd! Ughn… ughn! Fuck… ungh… going to… cum! Cum… cum with me %(gena_m_you_rpg)s!"
+    pc "Oh gawd %(gena_m_rpg)s I’m going to fucking fill you up! Fucking cumming baby!"
+    show bob-d5-868 with dissolve
+    play sound "sfx/orgasm1.wav"
+    gg "Do it! Fucking cum!"
+    pc "Oh Gawd yes!"
+    show bob-d5-869 with dissolve
+    gg "Yes… yes… yes!!!!!!"
+    stop sound
+    show bob-d5-870 with dissolve
+    gg "Huh… huh… wow!"
+    pc "Oh my Gawd. That felt so good."
+    show bob-d5-835 with dissolve
+    gg "I’m really going to miss this for two weeks."
+    show bob-d5-836 with dissolve
+    pc "Me too."
+    show bob-d5-837 with dissolve
+    gg "Speaking of which, I‘m sorry %(pc)s but I got to get going."
+    pc "Wha... what? Already?"
+    show bob-d5-838 with dissolve
+    gg "Yeah, I’ve got a day game tomorrow and have to be at the park super early."
+    pc "Crap. Well I understand. Let me call you a cab."
+    show bob-d5-839 with dissolve
+    gg "Thanks! Now what did you do with my panties this time?!?"
+    pc "Hahaha!"
+    show bob-d5-840 with dissolve
+    gg "Thanks again. Had a lot of fun!"
+    pc "Yeah me too!"
+    show bob-d5-841 with dissolve
+    gg "See you in two weeks!"
+    pc "Okay, sounds good! Safe Travels!"
+    show bob-d5-842 with dissolve
+    gg "I’ll call you!"
+    pc "Sounds good!"
+    $ moneyprc(-20)
+    "Cab ride home for Gena cost $20."
+    "(What a great girl man. I’m so lucky. I can’t wait to see her again when she gets back!)"
+    "(Gawd. Am I developing feelings for this girl? I don’t know but she’s pretty special.)"
+    "(Anyway, I need to wash my swamp ass and get ready for bed…)"
+    jump d5_shower_night
+
+
+
+
+
+
+
+label d5_bootycall_discourage:
+    scene bob-d5-871 with dissolve
+    gg "I don’t know. I hadn’t thought about it much. I mean I could honestly give two shits about the gym."
+    pc "And what about us?"
+    show bob-d5-794
+    gg "I…I don’t know? What about us?"
+    pc "Well I’m not going to lie. The thought of you hanging out in a hotel with a bunch of drunk ass frat boy baseball players doesn’t exactly sit well with me."
+    show bob-d5-792
+    gg "Aww! It’s kind of cute. You’re jealous!"
+    play music "music/Ambuscade.mp3" fadeout 2.0 fadein 2.0 loop
+    pc "Well I don’t want you going. You’re my girlfriend and I say if you can go or not. And I say no."
+    show bob-d5-871 with dissolve
+    gg "Wait a second. Listen, %(pc)s you’re a nice guy and all..."
+    "(Oh, here comes some bullshit line about me being a nice guy \"but\" fuck off I want jock cock or some bull shit!)"
+    show bob-d5-794 with dissolve
+    gg "…and I like spending time with you and all. But I’m not looking for anything serious right now."
+    pc "What?!? So, what was this? Tonight? Are you just fucking with me?!? My feelings?!?"
+    show bob-d5-872 with dissolve
+    gg "Dude? Are you for real right now?"
+    pc "What? Yeah, I’m for real!"
+    show bob-d5-838 with dissolve
+    gg "Look, I think I should get going. I can’t even deal with this right now."
+    pc "In a hurry to go swallow a bunch of jock cock, Gena?!? Just another fucking dirty cock slut!"
+    show bob-d5-853 with dissolve
+    gg "What the hell did you just say to me?!?"
+    pc "You heard me! Like all the other bitches out there! You’re just about fucking around for money and fame!"
+    show bob-d5-854 with dissolve
+    gg "Fuck you! You delusional asshole!"
+    pc "You walk out that door and it’s over Gena! You hear me? Fucking over!"
+    show bob-d5-857 with dissolve
+    gg "I’m going home. Lose my fucking number asshole!"
+    show bob-d5-873 with dissolve
+    gg "Oh, and for your fucking information I fucked your broke ass! So, rethink your outlook on life, asshole, because you got a really shitty attitude!"
+    play sound "sfx/doorclose.wav"
+    show bob-d5-874 with hpunch
+    pc "Fuck you bitch!"
+    "(Fuck her! Bitch was getting on my nerves anyway. Who the hell does she think she is?)"
+    "(I might have to teach that whore a lesson! You don’t say no to %(pc)s!)"
+    "(She’s going to learn her pussy belongs to me and only me!)"
+    "(Don’t think you can just walk out on me, Gena. That ass is mine! You better think again!)"
+    "(I better not find out that bitch is cheating on me! I’d fuck her up.)"
+    "(I should find out where she lives.)"
+    "(Anyway, that shit can wait. I need to wash my swamp ass…)"
+    jump d5_shower_night
+
+
+
+
+
+
+label d5_bootycall_indifferent:
+    scene bob-d5-794 with dissolve
+    gg "Oh… yeah for sure."
+    pc "Hey, I’m pretty beat. Want me to call you a cab?"
+    show bob-d5-838 with dissolve
+    gg "Oh… um, yeah that’d be great."
+    pc "Cool."
+    show bob-d5-839 with dissolve
+    gg "So listen I guess I’ll give you a call when I get back then."
+    pc "Yeah shoot me a text or whatever. Maybe grab another movie."
+    show bob-d5-841 with dissolve
+    gg "Okay, um… yeah… so I guess I’ll see you later."
+    pc "Cool. Have fun."
+    show bob-d5-842 with dissolve
+    gg "Will do."
+    show bob-d5-758 with dissolve
+    play sound "sfx/doorclose.wav"
+    "(Man, I thought she’d never leave. Seems like she’s pretty into me. Can’t blame her.)"
+    "(But honestly… meh. I’m not looking for anything serious right now. I got too much shit going on.)"
+    "(Anyway, I need to wash my swamp ass…)"
+    jump d5_shower_night
+
+
+
+
 
 
 label d5_shower_night:

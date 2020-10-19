@@ -1,8 +1,15 @@
 init python:
-    galleryCharacter = "All"
-    galleryPageNumber = 1
+    def galleryDecreasePageNumber():
+        global galleryPageNumber
+        galleryPageNumber -= 1
 
-    sceneGalleryMenuDict = {
+    def galleryIncreasePageNumber():
+        global galleryPageNumber
+        galleryPageNumber += 1
+
+default galleryPageNumber = 1
+
+define sceneGalleryMenuDict = {
     "galleryMenu": [
     ["All", "/images/35.jpg"],
     ],
@@ -40,7 +47,7 @@ label galleryNameChange:
         hide bob-lana-sprite-1
     if persistent.anita_n == "":
         show bob-anita-sprite-1 with dissolve
-        $ persistent.anita_n = renpy.input("This lovely, church-going, god-fearing, lady's name is?")
+        $ persistent.anita_n = renpy.input("This lovely, church-going, god-fearing, lady's name is?", default="Anita")
         if not persistent.patch_enabled:
             $ persistent.anita_name2 = persistent.anita_n
         hide bob-anita-sprite-1 with dissolve
@@ -95,14 +102,14 @@ screen sceneGalleryMenu():
         for i in sceneGalleryMenuDict["galleryMenu"]:
             vbox:
                 imagebutton:
-                    action ShowMenu("sceneCharacterMenu"), Hide("sceneGalleryMenu"), SetVariable("galleryCharacter", i[0])
+                    action [Show("sceneCharacterMenu", galleryCharacter=i[0]), Hide("sceneGalleryMenu")]
                     idle Transform(i[1], zoom=0.2)
                     hover Transform(im.MatrixColor(i[1], im.matrix.brightness(0.2)), zoom=0.2)
                 text i[0]:
                     style "modTextBody"
                     xcenter 0.5
 
-screen sceneCharacterMenu():
+screen sceneCharacterMenu(galleryCharacter="All"):
     tag menu
     modal True
     add "#23272a"
@@ -123,9 +130,9 @@ screen sceneCharacterMenu():
 
             imagebutton:
                 if galleryPageNumber == 1:
-                    action Hide("sceneCharacterMenu"), ShowMenu("main_menu")
+                    action Show("sceneGalleryMenu"), ShowMenu("main_menu")
                 else:
-                    action SetVariable("galleryPageNumber", galleryPageNumber - 1)
+                    action Function(galleryDecreasePageNumber)
                 idle "/oscarAdditions/images/button.png"
                 hover im.MatrixColor("/oscarAdditions/images/button.png", im.matrix.brightness(0.2))
             text "Back":
@@ -140,7 +147,7 @@ screen sceneCharacterMenu():
 
             if galleryPageNumber != len(sceneGalleryMenuDict[galleryCharacter]):
                 imagebutton:
-                    action SetVariable("galleryPageNumber", galleryPageNumber + 1)
+                    action Function(galleryIncreasePageNumber)
                     idle "/oscarAdditions/images/button.png"
                     hover im.MatrixColor("/oscarAdditions/images/button.png", im.matrix.brightness(0.2))
                 text "Next":
@@ -155,7 +162,7 @@ screen sceneCharacterMenu():
         pos (117, 360)
 
         for i in sceneGalleryMenuDict[galleryCharacter][galleryPageNumber]:
-            $ scopeDict = {"pc":persistent.pc, "pc1":persistent.pc1, "lana_n":persistent.lana_n, "anita_n":persistent.anita_n, "harry_n":persistent.harry_n, "anita_name2":persistent.anita_name2, "harry_name2":persistent.harry_name2}
+            $ scopeDict = {}
             $ scopeDict.update(i[1])
             imagebutton:
                 action Replay(i[0], scope=scopeDict, locked=False)

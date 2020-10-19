@@ -6,6 +6,7 @@ init python:
 
     CharmRoute = "{color=#0f0}[Charm Route]"
     Charm_5 = "{color=#f00}[Charm -5]"
+    Charm_3 = "{color=#f00}[Charm -3]"
     Charm_1 = "{color=#f00}[Charm -1]"
     Charm1 = "{color=#0f0}[Charm +1]"
     Charm2 = "{color=#0f0}[Charm +2]"
@@ -43,7 +44,6 @@ init python:
         persistent.harry_n = ""
 
 screen modOptions():
-    tag menu
     modal True
 
     add "#23272a"
@@ -95,7 +95,8 @@ screen modOptions():
         ypos 650
         text_style "modTextButtonBody"
 
-    textbutton _("Return") action ShowMenu("save"), Hide("modWalkthroughOptions"):
+    textbutton _("Return"):
+        action Hide("modOptions")
         yanchor 1.0
         pos (100, 1030)
         text_style "modTextButtonHeader"

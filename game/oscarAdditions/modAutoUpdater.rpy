@@ -20,13 +20,13 @@ init python:
             else:
                 return False
 
-    modConfigPath = os.path.join(os.getcwd(), "game", "oscarAdditions", "modConfig.txt")
+    modConfigPath = os.path.join(config.basedir, "game", "oscarAdditions", "modConfig.txt")
 
-        def updateChecker():
-            try:
-                if not isUpToDate(modConfigPath, "https://raw.githubusercontent.com/KiloOscarSix/Banking-on-Bella-OscarSix-s-Mod/master/game/oscarAdditions/modConfig.txt"):
-                    return True
-                else:
-                    return False
-            except:
+    def updateChecker():
+        try:
+            if not isUpToDate(modConfigPath, ""):
+                return True
+            else:
                 return False
+        except:
+            return False

@@ -12,7 +12,7 @@ screen modOutOfDate:
         ycenter 0.5
         spacing 50
 
-        text "{size=64}A new version of {b}OscarSix's [modGame] Mod{/b} is now available.\nClick the Download Now button to download the new update." text_align 0.5 xcenter 0.5 ycenter 0.5
+        text "{size=64}A new version of {b}Oscar's [modGame] Mod{/b} is now available.\nClick the Download Now button to download the new update." text_align 0.5 xcenter 0.5 ycenter 0.5
         hbox:
             spacing 100
             xcenter 0.5
@@ -23,6 +23,7 @@ screen modOutOfDate:
                 action Hide("modOutOfDate")
 
 label before_main_menu:
+
     if updateChecker():
         show screen modOutOfDate
 
