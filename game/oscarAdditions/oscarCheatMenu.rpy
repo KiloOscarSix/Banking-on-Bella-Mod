@@ -10,6 +10,7 @@ init python:
 screen cheatMenu():
     modal True
     zorder 200
+    add "#23272a"
 
     python:
         cheatMenuList = ["General"]
@@ -30,9 +31,9 @@ screen cheatMenu():
                     action [Function(renpy.retain_after_load), SetScreenVariable("shownCheatMenu", value=i)]
                     text_style "modTextButtonHeader"
 
-    for i in cheatMenuList:
-        if shownCheatMenu == i:
-            use cheatMenuValues(cheatMenuChar=i)
+    # for i in cheatMenuList:
+    #     if shownCheatMenu == i:
+    use cheatMenuValues(cheatMenuChar=i)
 
     imagebutton:
         action Hide("cheatMenu"), Hide("cheatMenuValues"), SetVariable("quick_menu", True)
